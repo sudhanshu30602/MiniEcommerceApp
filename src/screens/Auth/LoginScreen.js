@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   ActivityIndicator,
+  ImageBackground,
 } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -21,12 +22,10 @@ const LoginScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  // Check if user already logged in
   useEffect(() => {
     const checkLoginStatus = async () => {
       const token = await AsyncStorage.getItem('token');
-    //const token =  ''; 
-    if (token) {
+      if (token) {
         dispatch(loginSuccess(token));
         navigation.reset({
           index: 0,
@@ -64,86 +63,104 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      style={styles.container}
-    >
-      <View style={styles.card}>
-        <Text style={styles.title}>Welcome Back 👋</Text>
-        <TextInput
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          style={styles.input}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <TextInput
-          placeholder="Password"
-          value={password}
-          secureTextEntry
-          onChangeText={setPassword}
-          style={styles.input}
-        />
+  
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        style={styles.container}
+      >
+        <View style={styles.card}>
+          <Text style={styles.title}>Welcome Back 👋</Text>
+          <Text style={styles.subtitle}>Login to continue</Text>
 
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          {loading ? (
-            <ActivityIndicator color="#fff" />
-          ) : (
-            <Text style={styles.buttonText}>Login</Text>
-          )}
-        </TouchableOpacity>
+          <TextInput
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
+            style={styles.input}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            placeholderTextColor="#aaa"
+          />
+          <TextInput
+            placeholder="Password"
+            value={password}
+            secureTextEntry
+            onChangeText={setPassword}
+            style={styles.input}
+            placeholderTextColor="#aaa"
+          />
 
-        <Text
-          onPress={() => navigation.navigate('Signup')}
-          style={styles.link}
-        >
-          Don't have an account? <Text style={{ color: 'purple' }}>Sign Up</Text>
-        </Text>
-      </View>
-    </KeyboardAvoidingView>
+          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+            {loading ? (
+              <ActivityIndicator color="#fff" />
+            ) : (
+              <Text style={styles.buttonText}>Login</Text>
+            )}
+          </TouchableOpacity>
+
+          <Text style={styles.link}>
+            Don't have an account?{' '}
+            <Text
+              style={styles.signupText}
+              onPress={() => navigation.navigate('Signup')}
+            >
+              Sign Up
+            </Text>
+          </Text>
+        </View>
+      </KeyboardAvoidingView>
   );
 };
 
 export default LoginScreen;
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    backgroundColor: '#e7eaf0',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#f0f4f7',
     justifyContent: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 24,
   },
   card: {
-    backgroundColor: '#fff',
-    padding: 25,
-    borderRadius: 15,
-    elevation: 4,
+    backgroundColor: 'white',
+    padding: 28,
+    borderRadius: 18,
+    elevation: 6,
     shadowColor: '#000',
     shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 8,
   },
   title: {
-    fontSize: 26,
+    fontSize: 28,
     fontWeight: '700',
-    marginBottom: 25,
     color: '#333',
     textAlign: 'center',
+    marginBottom: 6,
+  },
+  subtitle: {
+    fontSize: 15,
+    color: '#666',
+    textAlign: 'center',
+    marginBottom: 24,
   },
   input: {
-    backgroundColor: '#f1f1f1',
-    padding: 12,
-    borderRadius: 8,
-    color:'black',
-    marginBottom: 15,
+    backgroundColor: '#f4f4f4',
+    padding: 14,
+    borderRadius: 10,
     fontSize: 16,
+    color: '#000',
+    marginBottom: 18,
   },
   button: {
     backgroundColor: 'purple',
-    paddingVertical: 14,
-    borderRadius: 10,
+    paddingVertical: 16,
+    borderRadius: 12,
     alignItems: 'center',
-    marginTop: 5,
+    marginTop: 6,
   },
   buttonText: {
     color: '#fff',
@@ -151,9 +168,13 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   link: {
-    marginTop: 15,
+    marginTop: 20,
     textAlign: 'center',
     fontSize: 14,
-    color: '#555',
+    color: '#444',
+  },
+  signupText: {
+    color: 'purple',
+    fontWeight: 'bold',
   },
 });

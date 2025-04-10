@@ -5,6 +5,7 @@ import { incrementQuantity, decrementQuantity, removeFromCart } from '../redux/s
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
+  console.log("FEW", item)
 
   return (
     <View style={styles.item}>

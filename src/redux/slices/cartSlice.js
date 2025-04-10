@@ -10,6 +10,7 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
         console.log("yee shi hai")
       const itemInCart = state.cartItems.find(item => item.id === action.payload.id);
+      
       if (itemInCart) {
         itemInCart.quantity += 1;
       } else {

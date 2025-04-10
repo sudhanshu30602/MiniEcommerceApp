@@ -31,7 +31,8 @@ const productSlice = createSlice({
     searchProducts: (state, action) => {
       const query = action.payload.toLowerCase();
       state.filteredItems = state.items.filter(item =>
-        item.title.toLowerCase().includes(query)
+        item.title.toLowerCase().includes(query) ||
+        item.category.toLowerCase().includes(query)
       );
     },
   },

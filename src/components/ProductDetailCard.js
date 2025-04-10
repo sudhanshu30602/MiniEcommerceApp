@@ -4,6 +4,8 @@ import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'rea
 import { useDispatch , useSelector} from 'react-redux';
 import { addToCart } from '../redux/slices/cartSlice';
 import { useNavigation } from '@react-navigation/native';
+import { incrementQuantity, decrementQuantity, removeFromCart } from '../redux/slices/cartSlice';
+
 
 
 const ProductDetailCard = ({ product }) => {
