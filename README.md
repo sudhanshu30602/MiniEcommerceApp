@@ -66,6 +66,42 @@ This is one way to run your app — you can also build it directly from Android 
 
 Now that you have successfully run the app, let's make changes!
 
+
+# 🛍️ React Native Mini E-Commerce App
+
+A beautifully designed, functional mini e-commerce application built with **React Native**, featuring product listing, category filtering, search, shopping cart integration, and theme support. This project showcases Redux Toolkit integration, smooth UI/UX with animation and lazy loading, and a modal-based settings/logout system.
+
+---
+
+## 🚀 Features
+
+- 📦 Fetch product and category data via API
+- 🔍 Real-time search with filtered results
+- 🧩 Filter products by category
+- 🛒 Add to Cart functionality using Redux
+- 🌓 Light and Dark mode support
+- 🎛 Settings modal with logout
+- 💨 Smooth animations and lazy image loading
+- 📱 Clean, mobile-friendly UI
+
+---
+
+## 🧑‍💻 Tech Stack
+
+- **React Native**
+- **Redux Toolkit** (state management)
+- **React Navigation**
+- **React Native Vector Icons**
+- **React Native Modal**
+- **AsyncStorage** (for cart/theme persistence)
+- **Custom Hooks + Utility Services**
+
+---
+
+## 📁 Project Structure
+
+
+
 Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
 When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
