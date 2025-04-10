@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL = 'https://fakestoreapi.in/api';
 
 export const fetchProducts = async () => {
-  const response = await axios.get(`https://fakestoreapi.in/api/products?limit=50`);
+  const response = await axios.get(`https://fakestoreapi.in/api/products?limit=100`);
   console.log("Product", response.data);
   return response.data;
 };

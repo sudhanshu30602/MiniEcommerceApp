@@ -44,6 +44,7 @@ const SignupScreen = ({ navigation }) => {
     >
       <View style={styles.card}>
         <Text style={styles.title}>Create Account 🎉</Text>
+        <Text style={styles.subtitle}>Sign Up continue</Text>
         <TextInput
           placeholder="Email"
           value={email}
@@ -96,6 +97,12 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
+  },
+  subtitle: {
+    fontSize: 15,
+    color: '#666',
+    textAlign: 'center',
+    marginBottom: 24,
   },
   title: {
     fontSize: 26,

@@ -7,11 +7,13 @@ import CartScreen from '../screens/Cart/CartScreen';
 import CheckoutScreen from '../screens/Checkout/CheckoutScreen';
 import PaymentSuccessScreen from '../screens/Checkout/PaymentSuccessScreen';
 import BottomTabNavigator from './BottomTabNavigator';
+import SplashScreen from '../screens/Auth/SplashScreen';
 
 const Stack = createStackNavigator();
 
 const AuthNavigator = () => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
+  <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='SplashScreen'>
+    <Stack.Screen name="SplashScreen" component={SplashScreen} />
     <Stack.Screen name="Login" component={LoginScreen} />
     <Stack.Screen  name="Signup" component={SignupScreen} />
     <Stack.Screen name="Tabs" component={BottomTabNavigator} />
